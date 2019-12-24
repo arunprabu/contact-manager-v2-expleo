@@ -1,0 +1,45 @@
+<div class="">
+    <h1>Angular Material Components Demo</h1>
+    <h2>Grid</h2>
+    <mat-grid-list cols="4" rowHeight="4: 3">
+        <mat-grid-tile>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio consequuntur quae doloribus et facere placeat explicabo. A saepe, eius at nemo doloremque accusamus, neque excepturi consequuntur dolor sequi officiis iusto.</mat-grid-tile>
+        <mat-grid-tile>2</mat-grid-tile>
+        <mat-grid-tile>3</mat-grid-tile>
+        <mat-grid-tile>4</mat-grid-tile>
+    </mat-grid-list>
+
+    <h2>List</h2>
+    <mat-list role="list">
+        <mat-list-item role="listitem">Item 1</mat-list-item>
+        <mat-list-item role="listitem">Item 2</mat-list-item>
+        <mat-list-item role="listitem">Item 3</mat-list-item>
+    </mat-list>
+
+    <h2>Dynamic List</h2>
+    <mat-list>
+        <h3 mat-subheader>Folders</h3>
+        <mat-list-item *ngFor="let folder of folders">
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>{{folder.name}}</h4>
+          <p mat-line> {{folder.updated | date}} </p>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <h3 mat-subheader>Notes</h3>
+        <mat-list-item *ngFor="let note of notes">
+          <mat-icon mat-list-icon>note</mat-icon>
+          <h4 mat-line>{{note.name}}</h4>
+          <p mat-line> {{note.updated | date}} </p>
+        </mat-list-item>
+    </mat-list>
+
+    <hr>
+    <h2>Date Picker</h2>
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+</div>

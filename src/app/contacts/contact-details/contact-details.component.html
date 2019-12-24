@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>
+        <a mat-icon-button routerLink="/contacts">
+          <mat-icon>arrow_back</mat-icon>
+        </a> John
+      </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+<div class="container">
+
+    <mat-grid-list cols="1" rowHeight="4:1">
+        <mat-grid-tile>
+            <mat-card class="detail-card">
+                <mat-card-title>{{ contactData.name }}</mat-card-title>
+                <mat-card-subtitle>{{ contactData.email }}</mat-card-subtitle>
+                <mat-card-content>
+                    <p>Phone No: {{ contactData.phone }}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" (click)="openDialog()">Edit</button>
+                    <button mat-raised-button >Delete</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</div>
