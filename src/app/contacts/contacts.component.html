@@ -17,10 +17,10 @@
 
     <mat-grid-list cols="3" rowHeight="2:2">
 
-        <mat-grid-tile >
-            <mat-card class="example-card">
-                <mat-card-title>John</mat-card-title>
-                <mat-card-subtitle>a@b.com</mat-card-subtitle>
+        <mat-grid-tile *ngFor="let contact of contactList">
+            <mat-card class="example-card" >
+                <mat-card-title>{{contact.name}}</mat-card-title>
+                <mat-card-subtitle>{{ contact.email }}</mat-card-subtitle>
                 <mat-card-content>
                     <p>
                         The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
@@ -29,12 +29,12 @@
                     </p>
                 </mat-card-content>
                 <mat-card-actions>
-                    <a mat-button routerLink="/contacts/1">VIEW DETAILS</a>
+                    <a mat-button routerLink="/contacts/{{contact.id}}">VIEW DETAILS</a>
                 </mat-card-actions>
             </mat-card>
         </mat-grid-tile>
 
-        
+
     </mat-grid-list>
 
 </div>

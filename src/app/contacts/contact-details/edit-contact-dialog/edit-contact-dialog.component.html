@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>You are editing details of John</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Enter Name" 
+    [(ngModel)]="data.name">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Enter Phone" 
+    [(ngModel)]="data.phone">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Enter E-Mail" 
+    [(ngModel)]="data.email">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button 
+  [mat-dialog-close]="data" cdkFocusInitial>Update</button>
+</div>

@@ -2,17 +2,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { DemoComponent } from './demo/demo.component';
-import { ContactsComponent } from './contacts/contacts.component';
-import { AddContactComponent } from './contacts/add-contact/add-contact.component';
-import { ContactDetailsComponent } from './contacts/contact-details/contact-details.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { AuthGuard } from './shared/guards/auth.guard';
+
 
 // setting up routes
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'demo', component: DemoComponent },
-  { path: 'contacts', component: ContactsComponent },
-  { path: 'contacts/add', component: AddContactComponent },
-  { path: 'contacts/1', component: ContactDetailsComponent }
+  { path: 'demo', component: DemoComponent, canActivate: [ AuthGuard ] },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: '**', component: PageNotFoundComponent } // Page not found - 404
 ];
 
 @NgModule({

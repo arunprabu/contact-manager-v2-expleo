@@ -11,11 +11,12 @@ class="mat-toolbar-header mat-elevation-z24">
     <button mat-button>About</button>
 
     <span class="auth-btns">
-      <button mat-raised-button color="accent">
+      <a mat-raised-button color="accent" routerLink="/login">
         <mat-icon>lock_open</mat-icon> Sign in
-      </button>
-      <button mat-raised-button color="accent">
-        <mat-icon>account_circle</mat-icon> Sign up</button>
+      </a>
+      <a mat-raised-button color="accent" routerLink="/signup">
+        <mat-icon>account_circle</mat-icon> Sign up
+      </a>
     </span>
   </div>
 

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ContactFormComponent } from '../contact-form/contact-form.component';
+import { ContactService } from '../contact.service';
+import { ActivatedRoute } from '@angular/router';
+import { EditContactDialogComponent } from './edit-contact-dialog/edit-contact-dialog.component';
+import { Contact } from '../contact';
 
 @Component({
   selector: 'app-contact-details',
@@ -9,27 +12,48 @@ import { ContactFormComponent } from '../contact-form/contact-form.component';
 })
 export class ContactDetailsComponent implements OnInit {
 
-  contactData: any;
+  contactData: Contact;
+  contactId: string;
 
-  constructor(public dialog: MatDialog) { }
+  constructor( private contactService: ContactService, 
+    private activatedRoute: ActivatedRoute, 
+    public dialog: MatDialog ) { }
 
   ngOnInit() {
-    this.contactData = {
-        name: 'arun', phone: 1233, email: 'a@b.com'
-    };
+    // ideal place for ajax calls
+    // reading url params in angular 8
+    this.contactId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.getContactData();
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(ContactFormComponent, {
-      width: '1000px',
-      data: JSON.parse(JSON.stringify(this.contactData))
-    });
+  openEditDialog() {
+    // open angular material dialog 
+    const dialogRef = this.dialog.open(EditContactDialogComponent, {
+        width: '400px',
+        data: JSON.parse(JSON.stringify(this.contactData))
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+    dialogRef.afterClosed().subscribe(async updatedContactData => {
+      console.log(updatedContactData);
+      // 1. pass the data to service
+      var status: any = await this.contactService.updateContact(updatedContactData)
+      // 2. get the resp from service 
       console.log('The dialog was closed');
-      this.contactData = result;
+      // calling the util method to get the data afresh
+      // as the status will not have the Contact data
+      this.getContactData();
     });
+
   }
+
+  getContactData() {
+    // 1. connect to service and send req
+    this.contactService.getContactById( this.contactId )
+      .subscribe( (res: Contact) => { // 2. get the resp from service
+        console.log( res );
+        this.contactData = res;
+      });
+  }
+
 
 }

@@ -12,14 +12,16 @@
 
     <mat-grid-list cols="1" rowHeight="4:1">
         <mat-grid-tile>
-            <mat-card class="detail-card">
+            <mat-card class="detail-card" *ngIf="contactData">
                 <mat-card-title>{{ contactData.name }}</mat-card-title>
                 <mat-card-subtitle>{{ contactData.email }}</mat-card-subtitle>
                 <mat-card-content>
                     <p>Phone No: {{ contactData.phone }}</p>
                 </mat-card-content>
+
                 <mat-card-actions>
-                    <button mat-raised-button color="primary" (click)="openDialog()">Edit</button>
+                    <button mat-raised-button color="primary"
+                     (click)="openEditDialog()">Edit</button>
                     <button mat-raised-button >Delete</button>
                 </mat-card-actions>
             </mat-card>

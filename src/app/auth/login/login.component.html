@@ -1,0 +1,32 @@
+<mat-grid-list cols="1" rowHeight="4:1">
+    <mat-grid-tile>
+        <form class="example-form" [formGroup]="login" (ngSubmit)="onLogin()">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Enter The Email" type ="email" name="Email" class="form-control" formControlName="Email">
+                <mat-error>
+                    <div *ngIf="f.Email.invalid && (f.Email.dirty || f.Email.touched)" class="alert alert-danger">
+                        <div *ngIf="f.Email.errors.required">
+                            Email is required.
+                        </div>
+                        <div *ngIf="f.Email.errors.email">
+                            Enter a Valid Email.
+                        </div>
+                    </div>
+                </mat-error>
+            </mat-form-field><br>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Enter password" type="password" name="password" class="form-control"
+                    formControlName="password">
+                <mat-error>
+                    <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)" class="alert alert-danger">
+                        <div *ngIf="f.password.errors.required">
+                            Password is required.
+                        </div>
+                        
+                    </div>
+                </mat-error>
+            </mat-form-field><br>
+            <button mat-raised-button color="accent" class="alignbtn" type="submit">Login</button>
+        </form>
+    </mat-grid-tile>
+</mat-grid-list>
