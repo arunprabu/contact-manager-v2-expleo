@@ -6,12 +6,14 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { AboutComponent } from './about/about.component';
 
 
 // setting up routes
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'demo', component: DemoComponent, canActivate: [ AuthGuard ] },
+  { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: '**', component: PageNotFoundComponent } // Page not found - 404

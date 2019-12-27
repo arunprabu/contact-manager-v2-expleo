@@ -23,6 +23,7 @@ import { EditContactDialogComponent } from './contacts/contact-details/edit-cont
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { EllipsisPipe } from './shared/pipes/ellipsis.pipe';
+import { AboutComponent } from './about/about.component';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -47,7 +48,8 @@ const firebaseConfig = {
     SignupComponent,
     EditContactDialogComponent,
     PageNotFoundComponent,
-    EllipsisPipe
+    EllipsisPipe,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
