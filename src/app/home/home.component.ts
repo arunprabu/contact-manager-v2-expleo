@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  today: Date = new Date();
+  devName = 'arun';
+
+  dummyText = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure voluptatem reprehenderit non tempora';
+  
   constructor() { }
 
   ngOnInit() {

@@ -1,1 +1,21 @@
-<p>home works!</p>
+<div class="container">
+
+    <h2>Pipes</h2>
+    <p>{{today}}</p>
+    <p>{{today | date }}</p>
+    <p>{{today | date: 'dd/MMMM/yyyy - hh:mm:ss a' }}</p>
+
+    <p>{{ devName | uppercase }}</p>
+
+    <h3>Custom Pipes - ng g p shared/pipes/ellipsis </h3>
+    <p>{{ dummyText }}</p>
+    <p>{{ dummyText | ellipsis }}</p>
+    <p>{{ dummyText | ellipsis: '64' }}</p>
+    <p>{{ dummyText | ellipsis: '20' }}</p>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
