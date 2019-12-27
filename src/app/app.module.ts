@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { ContactModule } from './contacts/contact.module';
 import { EditContactDialogComponent } from './contacts/contact-details/edit-contact-dialog/edit-contact-dialog.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -62,7 +63,9 @@ const firebaseConfig = {
     AppRoutingModule,
   ],
   entryComponents: [EditContactDialogComponent],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

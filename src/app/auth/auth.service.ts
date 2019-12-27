@@ -12,7 +12,6 @@ export class AuthService {
     private ngFireStore: AngularFirestore, private router: Router) { }
 
 
-
   signup(signupFormData: any) {
     console.log(signupFormData);
 
@@ -21,6 +20,7 @@ export class AuthService {
     .createUserWithEmailAndPassword(signupFormData.Email, signupFormData.password)
       .then((status) => {   // 2. get the resp from b/e
         console.log(status);
+        // show msg using snackbar before redirecting
         // upon successful registration
         setTimeout(() => {
           this.router.navigate(['login']);
@@ -38,15 +38,29 @@ export class AuthService {
     this.ngFireAuth.auth.signInWithEmailAndPassword(loginFormData.Email, loginFormData.password)
       .then((status) => {
         console.log(status);
-        localStorage.setItem("authToken", status.user.refreshToken);
         alert('Login Successful');
-        // redirect to concepts page
+
+        localStorage.setItem('authToken', status.user.refreshToken);
+        
+        // redirect to demo page
         this.router.navigate(['demo']);
       },
         (err) => {
           console.log(err);
-        })
+        });
   }
 
+  isAuthenticated() {
+    if (localStorage.getItem('authToken')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  logout() {
+    this.ngFireAuth.auth.signOut();
+    localStorage.removeItem('authToken');
+  }
 
 }

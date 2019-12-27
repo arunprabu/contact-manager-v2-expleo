@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
   }
   get f() { return this.login.controls; }
 
-  onLogin(){
-    this.authService.login(this.login.value)
+  onLogin() {
+    console.log(this.login.value);
+    this.authService.login(this.login.value);
   }
 }

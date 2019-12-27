@@ -1,6 +1,7 @@
 <mat-grid-list cols="1" rowHeight="4:1">
     <mat-grid-tile>
-        <form class="example-form" [formGroup]="login" (ngSubmit)="onLogin()">
+        <form class="example-form" [formGroup]="login" 
+        (ngSubmit)="onLogin()">
             <mat-form-field class="example-full-width">
                 <input matInput placeholder="Enter The Email" type ="email" name="Email" class="form-control" formControlName="Email">
                 <mat-error>
