@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ContactService {
 
-  REST_API_URL = 'https://jsonplaceholder.typicode.com/users/';
+  REST_API_URL = 'http://localhost:3000/api/contacts/';
 
   constructor(private http: HttpClient) { }
 

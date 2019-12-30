@@ -1,12 +1,12 @@
 export interface IContact {
-    id: number;
+    contactId: number;
     name: string;
     email: string;
     phone: string;
 }
 
 export class Contact implements IContact {
-    id: number;
+    contactId: number;
     name: string;
     email: string;
     phone: string;

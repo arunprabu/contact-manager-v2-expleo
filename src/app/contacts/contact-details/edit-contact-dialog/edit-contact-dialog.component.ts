@@ -16,4 +16,7 @@ export class EditContactDialogComponent implements OnInit {
     console.log(this.data);
   }
 
+  onNoClick(){
+    console.log('CLicked no');
+  }
 }
